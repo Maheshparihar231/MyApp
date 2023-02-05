@@ -8,7 +8,7 @@ const width = Dimensions.get('window').width;
 const Moredetail = ({route}) => {
   //const navigations = useNavigation();
   console.log(route.params)
-  const item = route.params;
+  const item = route.params.item;
   //
   return (
     <View>
@@ -17,11 +17,11 @@ const Moredetail = ({route}) => {
         <ImageBackground
           style={styles.logoIcon}
           resizeMode="cover"
-          source={require("../assets/logo.png")}
+          source={{ uri: item.image }}
         />
       </View>
       <View style={styles.detailcontainer}>
-        <Text style={styles.companyName}>{item.name}</Text>
+        <Text style={styles.companyName}>{item.name.toUpperCase()}</Text>
         <Text style={styles.role}>
           UI/UX Designer
         </Text>

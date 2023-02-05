@@ -1,9 +1,10 @@
-import { View, Text, FlatList, StyleSheet, Image,ScrollView, TouchableOpacity } from "react-native";
+import { View,Dimensions, Text, FlatList, StyleSheet, Image,ScrollView, TouchableOpacity } from "react-native";
 import React, { useState, useEffect, Component } from "react";
 import { useNavigation} from '@react-navigation/native';
 
 
-const Detail = () => {
+
+const Alljobs = () => {
   const navigation = useNavigation();
   const [isLoaded, setIsLoaded] = useState(true);
   const [myData, setMyData] = useState([]);
@@ -36,7 +37,7 @@ const Detail = () => {
   // render the students cards
   const showUserData = ({ item }) => {
     return (
-      <View>
+    <View>
         <TouchableOpacity 
         onPress={()=>{
             navigation.navigate('moredetail',{item : item,})}
@@ -61,46 +62,19 @@ const Detail = () => {
     </View>
     );
   };
-  
-  function viewallbutton(){
-    //console.log('daba diya')
-    navigation.navigate('All Jobs')
-  }
 
   return (
-    <View style={styles.container}>
-      <ScrollView>
-        <View style={styles.Jobcontainer}>
-          <View style={styles.header}>
-            <Text style={styles.title}>New Jobs</Text>
-            <TouchableOpacity onPress={()=>{viewallbutton()}}>
-              <Text style={styles.viewallbuttontext}>view all</Text>
-            </TouchableOpacity>
-          </View>
-          <FlatList
+    <View style={styles.container}>  
+        <View>
+            <FlatList
             keyExtractor={(item) => item.id}
             data={myData}
             renderItem={showUserData}
-            horizontal
+            ItemSeparatorComponent={() => <View style={{height: 30}} />}
             showsHorizontalScrollIndicator={false}
-          />
+            />
         </View>
-        <View style={styles.Coursecontainer}>
-          <View style={styles.header}>
-            <Text style={styles.title}>Available Courses</Text>
-            <TouchableOpacity onPress={()=>{viewallbutton()}}>
-              <Text style={styles.viewallbuttontext}>view all</Text>
-            </TouchableOpacity>
-          </View>
-          <FlatList
-            keyExtractor={(item) => item.id}
-            data={myData}
-            renderItem={showUserData}
-            horizontal
-            showsHorizontalScrollIndicator={false}
-          />
-        </View>
-      </ScrollView>
+        
     </View>
   );
 };
@@ -108,22 +82,9 @@ const Detail = () => {
 const styles = StyleSheet.create({
   container:{
     flex: 1,
-      backgroundColor: '#0E1111',
-  },
-  Jobcontainer:{
-    marginBottom:20,
-    height:460
-  },
-  Coursecontainer:{
-    bottom:20,
-    height:460
-  },
-  header:{
-    flexDirection:"row",
+    backgroundColor: '#0E1111',
+    justifyContent:"center",
     alignItems:"center",
-    justifyContent:"space-between",
-    marginTop:10,
-    marginLeft:20,
   },
   title:{
     fontSize:25,
@@ -139,22 +100,20 @@ const styles = StyleSheet.create({
     alignItems:"center"
   },
   gotodetailbutton:{
-    padding:10,
+    padding:7,
+    paddingHorizontal:10,
     margin:10,
     borderRadius:20,
     backgroundColor:'grey',
-    elevation:2,
+    elevation:3,    
   },
   gotodetailtext:{
-
+    
   },
   card: {
-    width: 250,
     height: 355,
     backgroundColor: "0E1111",
-    borderRadius: 5,
     margin: 20,
-    marginBottom:30
   },
   bioDataContainer: {
     width: "100%",
@@ -183,11 +142,15 @@ const styles = StyleSheet.create({
   },
   imgContainer: {
     padding: 10,
-    backgroundColor:'grey'
+    backgroundColor:'grey',
+    borderTopRightRadius:15,
+    borderTopLeftRadius:15,
   },
   imgStyle: {
     width: "100%",
     height: 180,
+    borderTopRightRadius:10,
+    borderTopLeftRadius:10,
   },
   mainContain: {
     padding: 10,
@@ -204,4 +167,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Detail;
+export default Alljobs;

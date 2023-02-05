@@ -97,7 +97,7 @@ const Home = () => {
           </View>
       </TouchableOpacity>
       <TouchableOpacity
-        onPress={()=>{navigation.navigate('detail')}}>
+        onPress={()=>{navigation.navigate('Detail')}}>
           <View style={styles.button}>
               <Text>
                 Detail page
@@ -114,7 +114,7 @@ export default Home
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#fff',
+      backgroundColor: '#555555',
       alignItems: 'center',
       justifyContent: 'center',
     },
