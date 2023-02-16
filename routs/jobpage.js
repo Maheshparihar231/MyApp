@@ -2,8 +2,6 @@ import { View,Dimensions, Text, FlatList, StyleSheet, Image,ScrollView, Touchabl
 import React, { useState, useEffect, Component } from "react";
 import { useNavigation} from '@react-navigation/native';
 
-
-
 const Alljobs = () => {
   const navigation = useNavigation();
   const [isLoaded, setIsLoaded] = useState(true);
@@ -99,19 +97,8 @@ const styles = StyleSheet.create({
     justifyContent:"center",
     alignItems:"center"
   },
-  gotodetailbutton:{
-    padding:7,
-    paddingHorizontal:10,
-    margin:10,
-    borderRadius:20,
-    backgroundColor:'grey',
-    elevation:3,    
-  },
-  gotodetailtext:{
-    
-  },
   card: {
-    height: 355,
+    height: 325,
     backgroundColor: "0E1111",
     margin: 20,
   },
@@ -155,8 +142,8 @@ const styles = StyleSheet.create({
   mainContain: {
     padding: 10,
     backgroundColor: "#353535",
-    borderBottomLeftRadius: 5,
-    borderBottomRightRadius: 5,
+    borderBottomLeftRadius: 15,
+    borderBottomRightRadius: 15,
   },
   myName: {
     fontSize: 14,

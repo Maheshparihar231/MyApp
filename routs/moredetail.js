@@ -1,5 +1,5 @@
 import * as React from "react";
-import { StyleSheet, View, Text, ImageBackground, TouchableOpacity, ScrollView,Dimensions } from "react-native";
+import { StyleSheet, View,Linking, Text, ImageBackground, TouchableOpacity, ScrollView,Dimensions } from "react-native";
 import { Colors } from "react-native/Libraries/NewAppScreen";
 import { useNavigation} from '@react-navigation/native';
 const height = Dimensions.get('window').height;
@@ -7,7 +7,7 @@ const width = Dimensions.get('window').width;
 
 const Moredetail = ({route}) => {
   //const navigations = useNavigation();
-  console.log(route.params)
+  console.log(route)
   const item = route.params.item;
   //
   return (
@@ -29,6 +29,10 @@ const Moredetail = ({route}) => {
           <Text style={styles.roleType}>Full Time</Text>
           <Text style={styles.money}>30k/month</Text>
         </View>
+        <View style={styles.price}>
+          <Text style={styles.roleType}>Experience</Text>
+          <Text style={styles.money}>Batch 2023</Text>
+        </View>
         <View style={styles.datepost}>
           <Text style={styles.postedOn}>Posted On</Text>
           <Text style={styles.date}>12 may 2022</Text>
@@ -44,13 +48,19 @@ const Moredetail = ({route}) => {
         
       </View>
       <View style={styles.applybuttonCONTAINER}>
-        <TouchableOpacity style={[styles.applybutton]}>
+        <TouchableOpacity style={[styles.applybutton]}
+          onPress={()=>{
+            Linking.openURL(item.website).catch((err)=>{
+              console.error("Failed opening page because: ", err)
+              alert('Failed to open page')
+            })
+          }}
+        >
           <Text style={styles.applybuttontext}>
             Apply
           </Text>
         </TouchableOpacity>
       </View>
-      
       </ScrollView>
     </View>
   );
@@ -84,13 +94,14 @@ const styles = StyleSheet.create({
   price:{
     flexDirection:"row",
     justifyContent:"space-between",
+    alignItems:"center",
     marginBottom:5,
   },
   roleType:{
-    fontSize:25,
+    fontSize:20,
   },
   money:{
-    fontSize:25,
+    fontSize:20,
   },
   datepost:{
     flexDirection:"row",
@@ -98,10 +109,10 @@ const styles = StyleSheet.create({
     marginBottom:15,
   },
   date:{
-    fontSize:25,
+    fontSize:20,
   },
   postedOn:{
-    fontSize:25,
+    fontSize:20,
   },
   requirmentbox:{
     marginBottom:20,

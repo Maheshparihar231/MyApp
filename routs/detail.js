@@ -1,7 +1,6 @@
-import { View, Text, FlatList, StyleSheet, Image,ScrollView, TouchableOpacity } from "react-native";
+import { View, Text, FlatList,ActivityIndicator, StyleSheet, Image,ScrollView, TouchableOpacity } from "react-native";
 import React, { useState, useEffect, Component } from "react";
 import { useNavigation} from '@react-navigation/native';
-
 
 const Detail = () => {
   const navigation = useNavigation();
@@ -54,33 +53,27 @@ const Detail = () => {
                 <View style={styles.mainContain}>
                     <Text style={styles.myName}> Name: {item.name} </Text>
                     <Text style={styles.myName}> email: {item.email} </Text>
-                    <Text style={styles.myName}> email: {item.email} </Text>
                 </View>
             </View>
         </TouchableOpacity>
     </View>
     );
   };
-  
-  function viewallbutton(){
-    //console.log('daba diya')
-    navigation.navigate('All Jobs')
-  }
-
   return (
     <View style={styles.container}>
       <ScrollView>
         <View style={styles.Jobcontainer}>
           <View style={styles.header}>
             <Text style={styles.title}>New Jobs</Text>
-            <TouchableOpacity onPress={()=>{viewallbutton()}}>
+            <TouchableOpacity onPress={()=>{navigation.navigate('All Jobs')}}>
               <Text style={styles.viewallbuttontext}>view all</Text>
             </TouchableOpacity>
           </View>
           <FlatList
             keyExtractor={(item) => item.id}
-            data={myData}
+            data={myData.slice(0,4)}
             renderItem={showUserData}
+            //initialNumToRender={2}
             horizontal
             showsHorizontalScrollIndicator={false}
           />
@@ -88,14 +81,15 @@ const Detail = () => {
         <View style={styles.Coursecontainer}>
           <View style={styles.header}>
             <Text style={styles.title}>Available Courses</Text>
-            <TouchableOpacity onPress={()=>{viewallbutton()}}>
+            <TouchableOpacity onPress={()=>{navigation.navigate('All course')}}>
               <Text style={styles.viewallbuttontext}>view all</Text>
             </TouchableOpacity>
           </View>
           <FlatList
             keyExtractor={(item) => item.id}
-            data={myData}
+            data={myData.slice(0,4)}
             renderItem={showUserData}
+            //initialNumToRender={2}
             horizontal
             showsHorizontalScrollIndicator={false}
           />
@@ -183,17 +177,21 @@ const styles = StyleSheet.create({
   },
   imgContainer: {
     padding: 10,
-    backgroundColor:'grey'
+    backgroundColor:'grey',
+    borderTopRightRadius:15,
+    borderTopLeftRadius:15,
   },
   imgStyle: {
     width: "100%",
     height: 180,
+    borderTopRightRadius:15,
+    borderTopLeftRadius:15,
   },
   mainContain: {
     padding: 10,
     backgroundColor: "#353535",
-    borderBottomLeftRadius: 5,
-    borderBottomRightRadius: 5,
+    borderBottomLeftRadius: 15,
+    borderBottomRightRadius: 15,
   },
   myName: {
     fontSize: 14,
