@@ -28,12 +28,8 @@ const Alljobs = () => {
 
   useEffect(() => {getUserData()}, []);
 
-  function moredetail(){
-    console.log('see detail')
-  }
-
   // render the students cards
-  const showUserData = ({ item }) => {
+  const showJobData = ({ item }) => {
     return (
     <View>
         <TouchableOpacity 
@@ -67,7 +63,7 @@ const Alljobs = () => {
             <FlatList
             keyExtractor={(item) => item.id}
             data={myData}
-            renderItem={showUserData}
+            renderItem={showJobData}
             ItemSeparatorComponent={() => <View style={{height: 30}} />}
             showsHorizontalScrollIndicator={false}
             />

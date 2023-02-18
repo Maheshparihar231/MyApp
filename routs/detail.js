@@ -33,7 +33,7 @@ const Detail = () => {
   }
 
   // render the students cards
-  const showUserData = ({ item }) => {
+  const showJobData = ({ item }) => {
     return (
       <View>
         <TouchableOpacity 
@@ -43,6 +43,32 @@ const Detail = () => {
             <View style={styles.card}>
                 <View style={styles.imgContainer}>
                 <Image style={styles.imgStyle} source={{ uri: item.image }} />
+                </View>
+                <View style={styles.bioDataContainer}>
+                    <Text style={styles.bioData}> Bio-Data </Text>
+                    <Text style={styles.idNumber}>
+                        {item.id < 10 ? `#0${item.id}` : `#{item.id}`}
+                    </Text>
+                </View>
+                <View style={styles.mainContain}>
+                    <Text style={styles.myName}> Name: {item.name} </Text>
+                    <Text style={styles.myName}> email: {item.email} </Text>
+                </View>
+            </View>
+        </TouchableOpacity>
+    </View>
+    );
+  };
+  const showCourseData = ({ item }) => {
+    return (
+      <View>
+        <TouchableOpacity 
+        onPress={()=>{
+            navigation.navigate('Course Details',{item : item,})}
+            }>
+            <View style={styles.card}>
+                <View style={styles.imgContainer}>
+                  <Image style={styles.imgStyle} source={{ uri: item.image }} />
                 </View>
                 <View style={styles.bioDataContainer}>
                     <Text style={styles.bioData}> Bio-Data </Text>
@@ -72,7 +98,7 @@ const Detail = () => {
           <FlatList
             keyExtractor={(item) => item.id}
             data={myData.slice(0,4)}
-            renderItem={showUserData}
+            renderItem={showJobData}
             //initialNumToRender={2}
             horizontal
             showsHorizontalScrollIndicator={false}
@@ -88,7 +114,7 @@ const Detail = () => {
           <FlatList
             keyExtractor={(item) => item.id}
             data={myData.slice(0,4)}
-            renderItem={showUserData}
+            renderItem={showCourseData}
             //initialNumToRender={2}
             horizontal
             showsHorizontalScrollIndicator={false}

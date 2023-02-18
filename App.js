@@ -5,6 +5,7 @@ import Detail from './routs/detail';
 import Moredetail from './routs/moredetail';
 import Alljobs from './routs/jobpage';
 import Allcourse from './routs/coursepage';
+import coursedetails from './routs/coursedetails';
 
 const Stack = createStackNavigator();
 export default function App() {
@@ -16,6 +17,7 @@ export default function App() {
           <Stack.Screen name='moredetail' component={Moredetail}/>
           <Stack.Screen name='All Jobs' component={Alljobs}/>
           <Stack.Screen name='All course' component={Allcourse}/>
+          <Stack.Screen name='Course Details' component={coursedetails}/>
         </Stack.Navigator>
      </NavigationContainer>
     )

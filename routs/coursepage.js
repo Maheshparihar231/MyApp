@@ -33,7 +33,7 @@ const Allcourse = () => {
     }
   
     // render the students cards
-    const showUserData = ({ item }) => {
+    const showCourseData = ({ item }) => {
       return (
       <View>
           <TouchableOpacity 
@@ -45,7 +45,7 @@ const Allcourse = () => {
                   <Image style={styles.imgStyle} source={{ uri: item.image }} />
                   </View>
                   <View style={styles.bioDataContainer}>
-                      <Text style={styles.bioData}> Bio-Data </Text>
+                      <Text style={styles.bioData}> item.title </Text>
                       <Text style={styles.idNumber}>
                           {item.id < 10 ? `#0${item.id}` : `#{item.id}`}
                       </Text>
@@ -66,7 +66,7 @@ const Allcourse = () => {
               <FlatList
               keyExtractor={(item) => item.id}
               data={myData}
-              renderItem={showUserData}
+              renderItem={showCourseData}
               ItemSeparatorComponent={() => <View style={{height: 5}} />}
               showsHorizontalScrollIndicator={false}
               />
