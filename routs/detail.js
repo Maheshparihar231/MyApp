@@ -10,7 +10,7 @@ const Detail = () => {
   const getUserData = async () => {
     try {
       const response = await fetch(
-        "https://thapatechnical.github.io/userapi/users.json"
+        "https://jsonplaceholder.typicode.com/users"
         //"https://jsonplaceholder.typicode.com/users"
       )
       // .then(response=>response.json())
